@@ -1,113 +1,146 @@
-import Image from 'next/image'
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { PiShoppingCartBold, PiShoppingCartSimple } from "react-icons/pi";
 
-export default function Home() {
+const page = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
+    <div className="px-[8%] font-primary overflow-x-hidden">
+      {/* Section 1 */}
+
+      <div className="lg:flex block justify-between items-center gap-10">
+        <div className="flex flex-col gap-y-[45px]">
+          <div className="bg-[#E1EDFF] text-[#0000FF] h-[40px] w-[120px] rounded-md flex justify-center items-center font-semibold">
+            Sale 70%
+          </div>
+          <div className="font-extrabold text-6xl">An Industrial Take on Streetwear</div>
+          <div className="text-[#7F6666] w-3/4">
+            Anyone can beat you but no one can beat your outfit as long as you wear Dine outfits.
+          </div>
+          <div>
+            <Button className="bg-[#212121] rounded-none w-[210px] h-[60px] font-semibold text-base flex items-center gap-2">
+              <PiShoppingCartBold className="text-[25px]" />
+              Start Shopping
+            </Button>
+          </div>
+          <div className="flex items-center gap-10 mt-2">
+            <Image src="/Featured1.png" height={25} width={95} alt="Image not found" />
+            <Image src="/Featured2.png" height={25} width={95} alt="Image not found" />
+            <Image src="/Featured3.png" height={25} width={95} alt="Image not found" />
+            <Image src="/Featured4.png" height={25} width={95} alt="Image not found" />
+          </div>
+        </div>
+        <div>
+          <div className="h-[590px] w-[590px] rounded-full bg-[#FFECE3] relative lg:block hidden"></div>
+          <div className="absolute top-[114px]">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              className="lg:block hidden"
+              src="/header.png"
+              alt="Image not found"
+              width={640}
+              height={640}
             />
-          </a>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      {/* Section 2 */}
+
+      <div className="my-32 flex flex-col gap-6 items-center justify-center font-primary">
+        <div className="text-[#0062F5] font-primary font-semibold text-sm tracking-widest">
+          PROMOTIONS
+        </div>
+        <div className="text-[#212121] text-4xl font-extrabold">Our Promotions Events</div>
+        <div className="xl:flex items-center justify-center gap-4">
+          <div className="flex flex-col md:gap-[10px]">
+            <div className="md:scale-100 scale-75 w-[650px] h-[200px] bg-[#D6D6D8] group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
+              <div className="flex">
+                <div className="flex flex-col justify-center h-[200px] px-10">
+                  <div className="text-3xl font-bold">
+                    GET UP TO <span className="text-4xl">60%</span>
+                  </div>
+                  <div className="font-light text-lg tracking-wider">For the summer season</div>
+                </div>
+                <div>
+                  <Image src="/event1.webp" height={220} width={260} alt="No Image found" />
+                </div>
+              </div>
+            </div>
+
+            <div className="md:scale-100 scale-75 w-[650px] h-[200px] bg-[#212121] flex flex-col gap-4 justify-center items-center group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
+              <div className="text-4xl font-extrabold text-white">GET 30% Off</div>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="font-light text-white">USE PROMO CODE</div>
+                <div className="w-[310px] h-[40px] bg-[#474747] rounded-lg flex justify-center items-center text-white font-bold tracking-widest hover:cursor-pointer">
+                  DINEWEEKENDSALE
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex xl:flex-none md:gap-4 md:mt-[10px] items-center justify-center">
+            <div className="md:scale-100 scale-75 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#EFE1C7] flex flex-col justify-between group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105  duration-700">
+              <div className="p-8">
+                <div className="font-light text-lg">Flex Sweatshirt</div>
+                <div className="flex items-center gap-3 mt-2">
+                  <div className="font-light line-through">$100.00</div>
+                  <div className="font-semibold">$75.00</div>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <Image src="/event2.webp" height={300} width={220} alt="No Image found" />
+              </div>
+            </div>
+
+            <div className="md:scale-100 scale-75 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#D7D7D9] group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105  duration-700">
+              <div className="p-8">
+                <div className="font-light text-lg">Flex Button Bomber</div>
+                <div className="flex items-center gap-3 mt-2">
+                  <div className="font-light line-through">$100.00</div>
+                  <div className="font-semibold">$75.00</div>
+                </div>
+              </div>
+              <div className="flex justify-center -mt-[1px]">
+                <Image src="/event3.webp" height={300} width={220} alt="No Image found" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      {/* Section 3 */}
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+      <div className="my-32 flex flex-col gap-6 items-center justify-center font-primary">
+        <div className="text-[#0062F5] font-primary font-semibold text-sm tracking-widest">
+          Products
+        </div>
+        <div className="text-[#212121] text-4xl font-extrabold">Check What We Have</div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <div className="flex items-center justify-center gap-8">
+          <div className="flex flex-col gap-2 hover:cursor-pointer group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
+            <div className="bg-[#D6D6D8] h-[400px] w-[380px]">
+              <Image src="/card1.png" alt="No Image found" height={400} width={380} />
+            </div>
+            <div className="font-bold mt-2">Brushed Raglan Sweatshirt</div>
+            <div className="font-bold text-lg">$195</div>
+          </div>
+          <div className="flex flex-col gap-2 group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
+            <div className="bg-[#EBE7E4] h-[400px] w-[380px]">
+              <Image src="/card3.png" alt="No Image found" height={400} width={380} />
+            </div>
+            <div className="font-bold mt-2">Cameryn Sash Tie Dress</div>
+            <div className="font-bold text-lg">$545</div>
+          </div>
+          <div className="flex flex-col gap-2 group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
+            <div className="bg-[#D6D6D8] h-[400px] w-[380px]">
+              <Image src="/card2.png" alt="No Image found" height={400} width={380} />
+            </div>
+            <div className="font-bold mt-2">Flex Sweatshirt</div>
+            <div className="font-bold text-lg">$175</div>
+          </div>
+        </div>
       </div>
-    </main>
-  )
-}
+    </div>
+  );
+};
+
+export default page;
