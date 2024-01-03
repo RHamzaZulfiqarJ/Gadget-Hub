@@ -115,22 +115,22 @@ const page = () => {
         </div>
         <div className="text-[#212121] text-4xl font-extrabold">Check What We Have</div>
 
-        <div className="flex items-center justify-center gap-8">
-          <div className="flex flex-col gap-2 hover:cursor-pointer group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
+        <div className="md:flex items-center justify-center gap-8">
+          <div className="flex flex-col gap-2 hover:cursor-pointer group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
             <div className="bg-[#D6D6D8] h-[400px] w-[380px]">
               <Image src="/card1.png" alt="No Image found" height={400} width={380} />
             </div>
             <div className="font-bold mt-2">Brushed Raglan Sweatshirt</div>
             <div className="font-bold text-lg">$195</div>
           </div>
-          <div className="flex flex-col gap-2 group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
+          <div className="flex flex-col gap-2 md:mt-0 mt-8 group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
             <div className="bg-[#EBE7E4] h-[400px] w-[380px]">
               <Image src="/card3.png" alt="No Image found" height={400} width={380} />
             </div>
             <div className="font-bold mt-2">Cameryn Sash Tie Dress</div>
             <div className="font-bold text-lg">$545</div>
           </div>
-          <div className="flex flex-col gap-2 group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
+          <div className="md:hidden xl:flex md:mt-0 mt-8 flex-col gap-2 group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
             <div className="bg-[#D6D6D8] h-[400px] w-[380px]">
               <Image src="/card2.png" alt="No Image found" height={400} width={380} />
             </div>
