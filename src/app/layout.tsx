@@ -145,7 +145,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
 
-          <div className="border-t-[1px] lg:text-lg text-[#666666] border-t-black w-screen pt-6 flex md:flex-row flex-col justify-center md:justify-around">
+          <div className="border-t-[1px] lg:text-lg text-[#666666] border-t-black w-screen p-6 flex md:flex-row flex-col justify-center md:justify-around">
             <div>Copyright © 2022 Dine Market</div>
             <div>
               Design by: <span className="text-black font-bold">Weird Design Studio</span>
