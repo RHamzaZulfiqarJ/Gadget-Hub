@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import Image from "next/image";
+import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="flex items-center justify-between w-full py-8 font-primary px-10">
+        <header className="flex overflow-x-hidden items-center justify-between w-full py-8 font-primary px-10">
           <Link href="/">
             <Image width={150} height={50} className="-mt-2" src="/Logo.png" alt="No Image found" />
           </Link>
@@ -34,22 +35,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link
               className="hover:text-red-500 transition-colors duration-500 cursor-pointer"
               href="/">
-              Female
+              Home
             </Link>
             <Link
               className="hover:text-red-500 transition-colors duration-500 cursor-pointer"
-              href="/">
-              Male
+              href="/products">
+              Products
             </Link>
             <Link
               className="hover:text-red-500 transition-colors duration-500 cursor-pointer"
-              href="/">
-              Kids
+              href="/contact-us">
+              Contact Us
             </Link>
             <Link
               className="hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer"
-              href="/">
-              All Products
+              href="/services">
+              Services
             </Link>
           </div>
           <div className="relative sm:block hidden">
@@ -76,12 +77,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 mr-12">
-                  <DropdownMenuItem className="hover:cursor-pointer flex justify-between py-2"><div>Open Cart</div><div className="bg-red-500 text-white rounded-full px-[4px] py-[2px] text-xs">10</div></DropdownMenuItem>
+                  <DropdownMenuItem className="hover:cursor-pointer flex justify-between py-2">
+                    <div>Open Cart</div>
+                    <div className="bg-red-500 text-white rounded-full px-[4px] py-[2px] text-xs">
+                      10
+                    </div>
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="hover:cursor-pointer">All Products</DropdownMenuItem>
-                  <DropdownMenuItem className="hover:cursor-pointer">Male</DropdownMenuItem>
-                  <DropdownMenuItem className="hover:cursor-pointer">Female</DropdownMenuItem>
-                  <DropdownMenuItem className="hover:cursor-pointer">Kids</DropdownMenuItem>
+                  <DropdownMenuItem className="hover:cursor-pointer">Home</DropdownMenuItem>
+                  <DropdownMenuItem className="hover:cursor-pointer">Products</DropdownMenuItem>
+                  <DropdownMenuItem className="hover:cursor-pointer">Contact Us</DropdownMenuItem>
+                  <DropdownMenuItem className="hover:cursor-pointer">Services</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
@@ -89,6 +95,66 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
 
         {children}
+
+        <footer>
+          <div className="overflow-x-hidden px-[8%] my-32 md:flex-row flex-col flex gap-4 justify-around">
+            <div className="flex flex-col gap-8">
+              <div>
+                <Image src="/Logo.png" alt="No Image Found" height={30} width={180} />
+              </div>
+              <div className="text-[#666666] w-[360px] ">
+                Small, artisan label that offers a thoughtfully curated collection of high quality
+                everyday essentials made.
+              </div>
+              <div className="flex gap-4 items-center">
+                <div className="relative p-1 group hover:cursor-pointer overflow-hidden transition-all transform-gpu hover:scale-[1.20] duration-700">
+                  <div className="bg-[#F1F1F1] rounded-lg p-[12px]">
+                    <FaTwitter className="text-[23px]" />
+                  </div>
+                </div>
+                <div className="relative p-1 group hover:cursor-pointer overflow-hidden transition-all transform-gpu hover:scale-[1.20] duration-700">
+                  <div className="bg-[#F1F1F1] rounded-lg p-[12px]">
+                    <FaFacebookF className="text-[23px]" />
+                  </div>
+                </div>
+                <div className="relative p-1 group hover:cursor-pointer overflow-hidden transition-all transform-gpu hover:scale-[1.20] duration-700">
+                  <div className="bg-[#F1F1F1] rounded-lg p-[12px]">
+                    <FaLinkedinIn className="text-[23px]" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-5">
+              <div className="text-xl font-bold text-[#666666]">Company</div>
+              <div className="text-[#666666]">About</div>
+              <div className="text-[#666666]">Terms of Use</div>
+              <div className="text-[#666666]">Privacy Policy</div>
+              <div className="text-[#666666]">How it Works</div>
+              <div className="text-[#666666]">Contact Us</div>
+            </div>
+            <div className="flex flex-col gap-5">
+              <div className="text-xl font-bold text-[#666666]">Support</div>
+              <div className="text-[#666666]">Support Carrier</div>
+              <div className="text-[#666666]">24/7 Service</div>
+              <div className="text-[#666666]">Quick Chat</div>
+            </div>
+            <div className="flex flex-col gap-5">
+              <div className="text-xl font-bold text-[#666666]">Contact</div>
+              <div className="text-[#666666]">Whatsapp</div>
+              <div className="text-[#666666]">Support 24/7</div>
+            </div>
+          </div>
+
+          <div className="border-t-[1px] lg:text-lg text-[#666666] border-t-black w-screen pt-6 flex md:flex-row flex-col justify-center md:justify-around">
+            <div>Copyright © 2022 Dine Market</div>
+            <div>
+              Design by: <span className="text-black font-bold">Weird Design Studio</span>
+            </div>
+            <div>
+              Code by: <span className="text-black font-bold">Hamza Zulfiqar</span>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );
