@@ -3,6 +3,6 @@ const nextConfig = {}
 
 module.exports = {
     images: {
-        domains: ['api.slingacademy.com'],
+        domains: ['api.slingacademy.com', 'fakestoreapi.com'],
     },
 }
