@@ -2,9 +2,7 @@
 
 import * as React from "react"
 import useEmblaCarousel, {
-  type EmblaCarouselType as CarouselApi,
-  type EmblaOptionsType as CarouselOptions,
-  type EmblaPluginType as CarouselPlugin,
+  type UseEmblaCarouselType as CarouselApi,
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
@@ -12,8 +10,6 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
 type CarouselProps = {
-  opts?: CarouselOptions
-  plugins?: CarouselPlugin[]
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
 }
@@ -46,9 +42,7 @@ const Carousel = React.forwardRef<
   (
     {
       orientation = "horizontal",
-      opts,
       setApi,
-      plugins,
       className,
       children,
       ...props
@@ -57,10 +51,8 @@ const Carousel = React.forwardRef<
   ) => {
     const [carouselRef, api] = useEmblaCarousel(
       {
-        ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
       },
-      plugins
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
@@ -70,8 +62,6 @@ const Carousel = React.forwardRef<
         return
       }
 
-      setCanScrollPrev(api.canScrollPrev())
-      setCanScrollNext(api.canScrollNext())
     }, [])
 
     const scrollPrev = React.useCallback(() => {
@@ -100,7 +90,6 @@ const Carousel = React.forwardRef<
         return
       }
 
-      setApi(api)
     }, [api, setApi])
 
     React.useEffect(() => {
@@ -108,12 +97,7 @@ const Carousel = React.forwardRef<
         return
       }
 
-      onSelect(api)
-      api.on("reInit", onSelect)
-      api.on("select", onSelect)
-
       return () => {
-        api?.off("select", onSelect)
       }
     }, [api, onSelect])
 
@@ -122,9 +106,6 @@ const Carousel = React.forwardRef<
         value={{
           carouselRef,
           api: api,
-          opts,
-          orientation:
-            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
           scrollPrev,
           scrollNext,
           canScrollPrev,
