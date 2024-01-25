@@ -1,18 +1,23 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 
-import './styles.css';
+import "./styles.css";
 
 // import required modules
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { EffectCoverflow, Pagination } from "swiper/modules";
+import Image from "next/image";
+import Toggle from "./Toggle";
+import Quantity from "./Quantity";
+import { Button } from "@/components/ui/button";
+import { PiShoppingCartBold } from "react-icons/pi";
 
 const getBlogData = async (id: number) => {
   const res = await fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts/${id}`);
@@ -26,12 +31,12 @@ async function BlogDetail({ params }: any) {
   const { blog } = await getBlogData(params.id);
 
   return (
-    <div className="flex justify-center p-[6%]">
+    <div className="flex flex-col justify-center p-[6%] font-primary">
       <Swiper
-        effect={'coverflow'}
+        effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={'auto'}
+        slidesPerView={"auto"}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -41,36 +46,36 @@ async function BlogDetail({ params }: any) {
         }}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
-        className="mySwiper"
-      >
+        className="mySwiper">
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          <Image src={blog.photo_url} alt="No image found" width={400} height={400} />
         </SwiperSlide>
       </Swiper>
+      <div className="flex justify-around">
+        <div className="flex flex-col">
+          <div className="text-4xl font-light">{blog.title}</div>
+          <div className="capitalize text-xl text-[#B0B0B0]">{blog.category}</div>
+          <div className="text-lg w-3/4 mt-4">{blog.description}</div>
+        </div>
+        <div className="flex flex-col gap-3">
+          <div className="text-xl font-bold">Select Size : </div>
+          <div>
+            <Toggle />
+          </div>
+          <div className="flex items-center gap-6 mt-4">
+            <div className="text-xl font-bold">Quantity : </div>
+            <div>
+              <Quantity />
+            </div>
+          </div>
+          <div>
+            <Button className="bg-[#212121] rounded-none w-[210px] h-[60px] font-semibold text-base flex items-center gap-2">
+              <PiShoppingCartBold className="text-[25px]" />
+              Start Shopping
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -84,10 +84,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </div>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="hover:cursor-pointer">Home</DropdownMenuItem>
-                  <DropdownMenuItem className="hover:cursor-pointer">Products</DropdownMenuItem>
-                  <DropdownMenuItem className="hover:cursor-pointer">Contact Us</DropdownMenuItem>
-                  <DropdownMenuItem className="hover:cursor-pointer">Services</DropdownMenuItem>
+                  <Link href="/">
+                    <DropdownMenuItem className="hover:cursor-pointer">Home</DropdownMenuItem>
+                  </Link>
+                  <Link href="/products">
+                    <DropdownMenuItem className="hover:cursor-pointer">Products</DropdownMenuItem>
+                  </Link>
+                  <Link href="/contact-us">
+                    <DropdownMenuItem className="hover:cursor-pointer">Contact Us</DropdownMenuItem>
+                  </Link>
+                  <Link href="/services">
+                    <DropdownMenuItem className="hover:cursor-pointer">Services</DropdownMenuItem>
+                  </Link>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
@@ -126,22 +134,42 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <div className="flex flex-col gap-5">
               <div className="text-xl font-bold text-[#666666]">Company</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">About</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">Terms of Use</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">Privacy Policy</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">How it Works</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">Contact Us</div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                About
+              </div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                Terms of Use
+              </div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                Privacy Policy
+              </div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                How it Works
+              </div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                Contact Us
+              </div>
             </div>
             <div className="flex flex-col gap-5">
               <div className="text-xl font-bold text-[#666666]">Support</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">Support Carrier</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">24/7 Service</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">Quick Chat</div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                Support Carrier
+              </div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                24/7 Service
+              </div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                Quick Chat
+              </div>
             </div>
             <div className="flex flex-col gap-5">
               <div className="text-xl font-bold text-[#666666]">Contact</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">Whatsapp</div>
-              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">Support 24/7</div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                Whatsapp
+              </div>
+              <div className="text-[#666666] hover:text-red-500 transition-colors ease-in-out duration-500 cursor-pointer">
+                Support 24/7
+              </div>
             </div>
           </div>
 
