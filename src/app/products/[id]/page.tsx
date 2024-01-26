@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -48,10 +48,10 @@ async function BlogDetail({ params }: any) {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper">
         <SwiperSlide>
-          <Image src={blog.photo_url} alt="No image found" width={400} height={400} />
+          <Image className="object-contain" src={blog.photo_url} alt="No image found" width={400} height={400} />
         </SwiperSlide>
       </Swiper>
-      <div className="flex justify-around">
+      <div className="flex md:flex-row flex-col gap-10 justify-around">
         <div className="flex flex-col">
           <div className="text-4xl font-light">{blog.title}</div>
           <div className="capitalize text-xl text-[#B0B0B0]">{blog.category}</div>
@@ -68,11 +68,12 @@ async function BlogDetail({ params }: any) {
               <Quantity />
             </div>
           </div>
-          <div>
-            <Button className="bg-[#212121] rounded-none w-[210px] h-[60px] font-semibold text-base flex items-center gap-2">
+          <div className="flex items-center mt-3">
+            <Button className="bg-[#212121] rounded-none h-[50px] font-semibold text-base flex items-center gap-2">
               <PiShoppingCartBold className="text-[25px]" />
-              Start Shopping
+              Add To Cart
             </Button>
+            <div></div>
           </div>
         </div>
       </div>

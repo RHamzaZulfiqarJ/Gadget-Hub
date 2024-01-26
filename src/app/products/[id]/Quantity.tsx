@@ -4,17 +4,18 @@ import React, { useState } from "react";
 
 const Quantity = () => {
   const [count, setCount] = useState(1);
+  const [price, setPrice] = useState(100);
 
   const increment = () => {
     setCount(count + 1);
-    console.log(count);
+    setPrice(price + 100);
   };
 
   const decrement = () => {
     if (count > 1) {
       setCount(count - 1);
     }
-    console.log(count);
+    setPrice(price - 100);
   };
 
   return (

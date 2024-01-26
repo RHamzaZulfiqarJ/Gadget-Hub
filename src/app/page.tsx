@@ -14,7 +14,7 @@ const page = () => {
           <div className="bg-[#E1EDFF] text-[#0000FF] h-[40px] w-[120px] rounded-md flex justify-center items-center font-semibold">
             Sale 70%
           </div>
-          <div className="font-extrabold text-6xl">An Industrial Take on Streetwear</div>
+          <div className="font-extrabold sm:text-6xl text-5xl">An Industrial Take on Streetwear</div>
           <div className="text-[#7F6666] w-3/4">
             Anyone can beat you but no one can beat your outfit as long as you wear Dine outfits.
           </div>
@@ -24,7 +24,7 @@ const page = () => {
               Start Shopping
             </Button>
           </div>
-          <div className="flex items-center gap-10 mt-2">
+          <div className="flex items-center sm:gap-10 gap-8 mt-2">
             <Image src="/Featured1.png" height={25} width={95} alt="Image not found" />
             <Image src="/Featured2.png" height={25} width={95} alt="Image not found" />
             <Image src="/Featured3.png" height={25} width={95} alt="Image not found" />
@@ -51,36 +51,36 @@ const page = () => {
         <div className="text-[#0062F5] font-primary font-semibold text-sm tracking-widest">
           PROMOTIONS
         </div>
-        <div className="text-[#212121] text-4xl font-extrabold">Our Promotions Events</div>
-        <div className="xl:flex items-center justify-center gap-4">
-          <div className="flex flex-col md:gap-[10px]">
-            <div className="md:scale-100 scale-75 w-[650px] h-[200px] bg-[#D6D6D8] group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
+        <div className="text-[#212121] text-4xl font-extrabold text-center">Our Promotions Events</div>
+        <div className="flex xl:flex-row flex-col items-center justify-center gap-4">
+          <div className="flex flex-col items-center md:gap-[10px]">
+            <div className="scale-100 md:w-[650px] md:h-[200px] flex items-center justify-center w-full h-[150px] bg-[#D6D6D8] group overflow-hidden transition-all transform-gpu hover:scale-[1.05] duration-700">
               <div className="flex">
-                <div className="flex flex-col justify-center h-[200px] px-10">
-                  <div className="text-3xl font-bold">
-                    GET UP TO <span className="text-4xl">60%</span>
+                <div className="flex flex-col items-center justify-center h-[200px] px-10">
+                  <div className="md:text-3xl text-2xl font-bold">
+                    GET UP TO <span className="md:text-4xl text-3xl">60%</span>
                   </div>
                   <div className="font-light text-lg tracking-wider">For the summer season</div>
                 </div>
                 <div>
-                  <Image src="/event1.webp" height={220} width={260} alt="No Image found" />
+                  <Image className="md:block hidden" src="/event1.webp" height={220} width={260} alt="No Image found" />
                 </div>
               </div>
             </div>
 
-            <div className="md:scale-100 scale-75 w-[650px] h-[200px] bg-[#212121] flex flex-col gap-4 justify-center items-center group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105 duration-700">
-              <div className="text-4xl font-extrabold text-white">GET 30% Off</div>
+            <div className="md:mt-0 mt-4 scale-100 md:w-[650px] md:h-[200px] flex items-center justify-center w-full h-[150px] flex-col bg-[#212121] gap-4 group overflow-hidden transition-all transform-gpu hover:scale-[1.05] duration-700">
+              <div className="md:text-4xl text-3xl font-extrabold text-white">GET 30% Off</div>
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div className="font-light text-white">USE PROMO CODE</div>
-                <div className="w-[310px] h-[40px] bg-[#474747] rounded-lg flex justify-center items-center text-white font-bold tracking-widest hover:cursor-pointer">
+                <div className="md:w-[310px] h-[40px] w-12/12 md:px-0 px-5 bg-[#474747] rounded-lg flex justify-center items-center text-white font-bold tracking-widest hover:cursor-pointer">
                   DINEWEEKENDSALE
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex xl:flex-none md:gap-4 md:mt-[10px] items-center justify-center">
-            <div className="md:scale-100 scale-75 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#EFE1C7] flex flex-col justify-between group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105  duration-700">
+          <div className="md:flex xl:flex-none md:gap-4 md:mt-[10px] items-center justify-center">
+            <div className="scale-100 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#EFE1C7] flex flex-col justify-between group overflow-hidden transition-all transform-gpu hover:scale-105  duration-700">
               <div className="p-8">
                 <div className="font-light text-lg">Flex Sweatshirt</div>
                 <div className="flex items-center gap-3 mt-2">
@@ -93,7 +93,7 @@ const page = () => {
               </div>
             </div>
 
-            <div className="md:scale-100 scale-75 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#D7D7D9] group overflow-hidden transition-all transform-gpu hover:scale-[.8] md:hover:scale-105  duration-700">
+            <div className="md:mt-0 mt-4 scale-100 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#D7D7D9] group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
               <div className="p-8">
                 <div className="font-light text-lg">Flex Button Bomber</div>
                 <div className="flex items-center gap-3 mt-2">
@@ -115,7 +115,7 @@ const page = () => {
         <div className="text-[#0062F5] font-primary font-semibold text-sm tracking-widest">
           Products
         </div>
-        <div className="text-[#212121] text-4xl font-extrabold">Check What We Have</div>
+        <div className="text-[#212121] text-4xl font-extrabold text-center">Check What We Have</div>
 
         <div className="md:flex items-center justify-center gap-8">
           <div className="flex flex-col gap-2 hover:cursor-pointer group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
@@ -144,12 +144,12 @@ const page = () => {
 
       {/* Section 4 */}
 
-      <div className="px-[8%] flex justify-center my-32">
-        <div className="opacity-5 text-[8rem] text-center font-extrabold">Newsletter</div>
+      <div className="px-[10%] flex justify-center my-32">
+        <div className="opacity-5 md:text-[8rem] text-[6rem] text-center font-extrabold">Newsletter</div>
         <div className="absolute flex flex-col gap-6 items-center text-center -mb-6">
           <div className="text-4xl font-extrabold">Subscribe Our Newsletter</div>
-          <div className="font-light">Get the latest information and promo offers directly</div>
-          <div className="flex justify-center w-full max-w-sm items-center space-x-2">
+          <div className="font-light w-11/12">Get the latest information and promo offers directly</div>
+          <div className="flex justify-center w-11/12 max-w-sm items-center space-x-2">
             <Input
               className="bg-transparent border-[1px] border-black"
               type="email"
