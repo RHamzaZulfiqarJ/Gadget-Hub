@@ -61,14 +61,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             />
           </div>
           <div>
-            <div className="lg:block hidden relative p-1 group hover:cursor-pointer overflow-hidden transition-all transform-gpu hover:scale-[1.20] duration-700">
+            <Link href={'/cart'} className="lg:block hidden relative p-1 group hover:cursor-pointer overflow-hidden transition-all transform-gpu hover:scale-[1.20] duration-700">
               <div className="absolute top-0 right-0 bg-red-500 text-white rounded-full px-[4px] py-[2px] text-xs">
                 10
               </div>
               <div className="bg-[#F1F1F1] rounded-full p-[10px]">
                 <PiShoppingCartSimple className="text-[25px]" />
               </div>
-            </div>
+            </Link>
             <div className="lg:hidden block p-1 group hover:cursor-pointer overflow-hidden transition-all transform-gpu hover:scale-[1.20] duration-700">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -77,12 +77,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 mr-12">
-                  <DropdownMenuItem className="hover:cursor-pointer flex justify-between py-2">
-                    <div>Open Cart</div>
-                    <div className="bg-red-500 text-white rounded-full px-[4px] py-[2px] text-xs">
-                      10
-                    </div>
-                  </DropdownMenuItem>
+                  <Link href={"/cart"}>
+                    <DropdownMenuItem className="hover:cursor-pointer flex justify-between py-2">
+                      <div>Open Cart</div>
+                      <div className="bg-red-500 text-white rounded-full px-[4px] py-[2px] text-xs">
+                        10
+                      </div>
+                    </DropdownMenuItem>
+                  </Link>
                   <DropdownMenuSeparator />
                   <Link href="/">
                     <DropdownMenuItem className="hover:cursor-pointer">Home</DropdownMenuItem>
