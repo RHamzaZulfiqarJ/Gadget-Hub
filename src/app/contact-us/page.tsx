@@ -10,9 +10,9 @@ const contactus = () => {
     <div className="mt-10 mb-32 mx-[10%] font-primary">
       <div className="flex flex-col">
         <div className="text-3xl font-extrabold">Contact Us</div>
-        <div className="flex gap-32 mt-10">
+        <div className="flex xl:flex-row flex-col gap-32 mt-10">
           <div className="h-full shadow-lg rounded-xl flex flex-col p-10 gap-6">
-            <div className="flex flex-row gap-4">
+            <div className="flex w-full flex-row gap-4">
               <div className="flex flex-col gap-2">
                 <div>
                   First Name <span className="text-red-500">*</span>
