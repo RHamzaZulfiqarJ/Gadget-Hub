@@ -11,10 +11,14 @@ datasource db {
 }
 
 model post {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  content   String
-  published Boolean @default(false)
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  category      String
+  description   String
+  price         Int
+  img           Bytes[]
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
 }
 
 model contact {
@@ -24,4 +28,6 @@ model contact {
   email       String
   phone       String
   message     String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }

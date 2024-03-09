@@ -25,6 +25,7 @@ import { Tooltip } from "@mui/material";
 import { IoBagOutline, IoCartOutline, IoMailOutline, IoSpeedometerOutline } from "react-icons/io5";
 import { HiBars4 } from "react-icons/hi2";
 import { GoGear } from "react-icons/go";
+import Link from "next/link";
 
 const drawerWidth = 240;
 
@@ -112,29 +113,34 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   const content = [
     {
+      id: 0,
       title: "Dashboard",
       icon: <IoSpeedometerOutline />,
-      link: "/admin/panel/dashboard",
+      link: "/admin/panel/key",
     },
     {
+      id: 1,
       title: "Products",
       icon: <IoBagOutline />,
-      link: "/admin/panel/products",
+      link: "/admin/panel/key/products",
     },
     {
+      id: 2,
       title: "Orders",
       icon: <IoCartOutline />,
-      link: "/admin/panel/orders",
+      link: "/admin/panel/key/orders",
     },
     {
+      id: 3,
       title: "Messages",
       icon: <IoMailOutline />,
-      link: "/admin/panel/messages",
+      link: "/admin/panel/key/messages",
     },
     {
+      id: 4,
       title: "Settings",
       icon: <GoGear />,
-      link: "admin/panel/settings"
+      link: "/admin/panel/key/settings"
     }
   ]
 
@@ -174,6 +180,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <List>
               {content.map((text, index) => (
                 <Tooltip arrow title={text.title} key={index} placement="right">
+                  <Link href={text.link}>
                   <ListItem className={`${active == index ? "bg-gray-200 border-l-[3px] border-l-blue-400" : ""}`} key={index} disablePadding sx={{ display: "block" }}>
                     <ListItemButton
                       onClick={() => setActive(index)}
@@ -194,6 +201,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       <ListItemText primary={text.title} sx={{ opacity: open ? 1 : 0 }} />
                     </ListItemButton>
                   </ListItem>
+                  </Link>
                 </Tooltip>
               ))}
             </List>

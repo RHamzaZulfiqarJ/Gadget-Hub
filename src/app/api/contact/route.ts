@@ -27,3 +27,17 @@ export const POST = async (req: Request) => {
         await prisma.$disconnect();
     }
 }
+
+export const GET = async () => {
+    try {
+        await connectDatabase();
+        const contacts = await prisma.contact.findMany();
+        return NextResponse.json({ contacts }, { status: 200 });
+    }
+    catch (error) {
+        return NextResponse.json({ message: "Something went wrong", error }, { status: 500 });
+    }
+    finally {
+        await prisma.$disconnect();
+    }
+}
