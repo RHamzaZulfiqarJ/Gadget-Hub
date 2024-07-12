@@ -16,7 +16,7 @@ model post {
   category      String
   description   String
   price         Int
-  img           Bytes[]
+  img           String[]
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
 }

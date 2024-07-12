@@ -49,7 +49,7 @@ const page = () => {
             </span>
           </div>
         </div>
-      ) : (
+      ) : data.length > 0 ? (
         data.map((contact, index) => (
           <div className="mb-4" key={index}>
             <Card
@@ -63,6 +63,10 @@ const page = () => {
             />
           </div>
         ))
+      ) : data.length <= 0 && (
+        <div className="flex flex-row justify-center">
+          <img src="/NoDataFound.jpg" height={400} width={400} alt="No Image Found" />
+        </div>
       )}
     </div>
   );

@@ -1,7 +1,4 @@
-"use client";
-
-import React, { useState, useEffect, ChangeEvent } from "react";
-import { Button } from "@/components/ui/button";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -10,13 +7,15 @@ import { Input } from "@/components/ui/input";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Button from "@mui/material/Button";
+import axios from "axios";
 
-type Post = {
+type PostData = {
   title: string;
-  description: string;
   category: string;
+  description: string;
   price: number;
-  img: string[];
+  img: string;
 };
 
 export default function Create({
@@ -31,28 +30,48 @@ export default function Create({
   };
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<Post>({
-    title: "",
-    description: "",
-    category: "",
-    price: 0,
-    img: [],
-  });
+  const [title, setTitle] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [price, setPrice] = useState<number>(0);
+  const [img, setImg] = useState<File[]>([]);
 
-  const handleInputChange = (event: any) => {
-    const { name, value } = event.target;
-    setData({ ...data, [name]: value });
+  const handleFileInput = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setImg(Array.from(e.target.files));
+    }
   }
 
-  const postData = () => {
-    
-  }
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("category", category);
+      formData.append("description", description);
+      formData.append("price", price.toString());
+      img.forEach((img) => formData.append("img", img));
+      const res = await axios.post("/api/post", formData);
+      console.log(res.data);
+      setOpen(false);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+      setTitle("");
+      setCategory("");
+      setDescription("");
+      setPrice(0);
+      setImg([]);
+    }
+  };
 
   const Categories = ["Fancy", "Casual", "Formal", "Sports", "Party", "Wedding"];
 
   return (
-    <div>
-      <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
+    <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <DialogTitle className="font-primary">Add New Product</DialogTitle>
         <DialogContent>
           <div className="my-6 px-4">
@@ -60,17 +79,18 @@ export default function Create({
               <div className="text-xl">Title</div>
               <Input
                 name="title"
-                value={data.title}
-                onChange={handleInputChange}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 className="font-primary"
+                required
               />
             </div>
             <div className="flex items-center justify-between gap-10 mt-4">
               <div className="text-xl">Description</div>
               <Input
                 name="description"
-                value={data.description}
-                onChange={handleInputChange}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 className="font-primary"
               />
             </div>
@@ -79,9 +99,10 @@ export default function Create({
               <FormControl fullWidth>
                 <Select
                   name="category"
-                  value={data.category}
-                  onChange={handleInputChange}
-                  className="h-10">
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value as string)}
+                  className="h-10"
+                >
                   {Categories.map((category, index) => (
                     <MenuItem key={index} value={category}>
                       {category}
@@ -94,8 +115,9 @@ export default function Create({
               <div className="text-xl">Price</div>
               <Input
                 name="price"
-                value={data.price}
-                onChange={handleInputChange}
+                type="number"
+                value={price}
+                onChange={(e) => setPrice(Number(e.target.value))}
                 className="font-primary"
               />
             </div>
@@ -104,18 +126,33 @@ export default function Create({
               <Input
                 type="file"
                 name="img"
-                multiple
-                onChange={handleInputChange}
+                accept="image/*"
+                multiple={true}
+                onChange={handleFileInput}
                 className="font-primary"
               />
             </div>
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit" onClick={postData}>Create</Button>
+          <Button className="bg-red-600 text-white hover:bg-red-500 rounded-lg p-2" onClick={handleClose} disabled={loading}>
+            Cancel
+          </Button>
+          <Button className="bg-blue-400 text-white hover:bg-blue-500 rounded-lg p-2" type="submit" disabled={loading}>
+            {loading ? (
+              <div className="flex justify-center py-[8%]">
+                <div
+                  className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                  role="status">
+                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                    Loading...
+                  </span>
+                </div>
+              </div>
+            ) : "Add"}
+          </Button>
         </DialogActions>
-      </Dialog>
-    </div>
+      </form>
+    </Dialog>
   );
 }
