@@ -22,7 +22,7 @@ export const DELETE = async (req: Request) => {
     }
 }
 
-export const FINDONE = async (req: Request) => {
+export const OPTIONS = async (req: Request) => {
     try {
         const id = req.url.split("/contact/")[1];
         await connectDatabase();
