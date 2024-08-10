@@ -4,7 +4,7 @@ import { GiTie } from "react-icons/gi";
 import { CiRuler, CiUser } from "react-icons/ci";
 import { PiHandshakeThin } from "react-icons/pi";
 
-const service = () => {
+const Service = () => {
   return (
     <section className="pb-12 pt-10 dark:bg-dark lg:pb-[50px] lg:pt-[80px]">
       <div className="container mx-auto">
@@ -74,7 +74,7 @@ const service = () => {
   );
 };
 
-export default service;
+export default Service;
 
 const ServiceCard = ({ icon, title, details }: {icon:any, title: string, details: string}) => {
   return (

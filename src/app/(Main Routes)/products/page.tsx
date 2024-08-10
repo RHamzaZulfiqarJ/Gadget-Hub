@@ -1,31 +1,77 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Masonry from "react-masonry-css";
 import Card from "./Card";
+import Load from "./Load";
 
-const products = () => {
+type Product = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  price: number;
+  img: string[];
+  created_at: string;
+};
 
-    const getProduct = async () => {
-        const res = await fetch("https://fakestoreapi.com/products");
-        if (!res.ok) {
-          throw new Error("Something went wrong");
-        }
-        return res.json();
-      };
+const Products = () => {
+  const [data, setData] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/post");
+      const jsonData = await res.json();
+      setData(jsonData.posts as Product[]);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 2
+  };
 
   return (
-    <div className="pb-[8%] px-[8%] flex gap-5 flex-wrap justify-center">
-      {getProduct().then((data) => {
-        return data.map((product: any) => {
-          return (
-            <div key={product.id}>
-              <Card src={product.image} title={product.title} description={product.description} price={product.price} id={product.id} />
-            </div>
-          );
-        });
-      })}
+    <div className="pb-[8%] px-[5%]">
+      {
+        loading ? (
+          <Load />
+        ) : (
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="flex -ml-5 w-auto"
+            columnClassName="pl-5 bg-clip-padding"
+          >
+            {
+              data.map((product: Product) => (
+                <Card
+                  key={product.id}
+                  id={product.id}
+                  title={product.title}
+                  category={product.category}
+                  description={product.description}
+                  price={product.price}
+                  img={product.img}
+                  created_at={product.created_at}
+                />
+              ))
+            }
+          </Masonry>
+        )
+      }
     </div>
   );
 };
 
-export default products;
+export default Products;

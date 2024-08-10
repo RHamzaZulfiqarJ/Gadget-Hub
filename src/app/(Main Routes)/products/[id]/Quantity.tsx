@@ -1,46 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import React, { ChangeEvent, useState } from "react";
 
-const Quantity = () => {
-  const [count, setCount] = useState(1);
-  const [price, setPrice] = useState(100);
-
-  const increment = () => {
+const Quantity = ({
+  count,
+  setCount,
+}: {
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+}) => {
+  const increment = (e: any) => {
+    e.preventDefault();
     setCount(count + 1);
-    setPrice(price + 100);
   };
 
   const decrement = () => {
     if (count > 1) {
       setCount(count - 1);
     }
-    setPrice(price - 100);
   };
 
   return (
     <div>
       <div className="flex gap-3">
-        {count == 1 ? (
-          <button
-            disabled
-            onClick={decrement}
-            className="font-semibold px-4 py-2 rounded bg-gray-600 text-white">
-            -
-          </button>
-        ) : (
-          <button
-            onClick={decrement}
-            className="font-semibold px-4 py-2 rounded bg-black hover:bg-gray-800 transition-colors text-white">
-            -
-          </button>
-        )}
+        <Button
+          type="button"
+          onClick={decrement}
+          className={`font-semibold px-4 py-2 rounded ${
+            count === 1 ? 'bg-gray-600' : 'bg-black hover:bg-gray-800 transition-colors'
+          } text-white`}
+          disabled={count === 1}
+        >
+          -
+        </Button>
         <div className="font-semibold px-4 py-2 rounded text-black">{count}</div>
-        <button
+        <Button
+          type="button"
           onClick={increment}
-          className="font-semibold px-4 py-2 rounded bg-black hover:bg-gray-800 transition-colors text-white">
+          className="font-semibold px-4 py-2 rounded bg-black hover:bg-gray-800 transition-colors text-white"
+        >
           +
-        </button>
+        </Button>
       </div>
     </div>
   );

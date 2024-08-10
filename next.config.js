@@ -1,11 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    Experimental: { serverActions: true },
+    reactStrictMode: true,
 }
 
-module.exports = {
-    images: {
-        domains: ['api.slingacademy.com', 'fakestoreapi.com'],
-    },
-    nextConfig,
-}
+module.exports = nextConfig

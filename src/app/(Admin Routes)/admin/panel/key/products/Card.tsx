@@ -3,14 +3,23 @@
 import React, { useState } from "react";
 import { IoClose, IoPencil } from "react-icons/io5";
 import { Alert, Snackbar } from "@mui/material";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./styles.css";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { Button } from "@mui/material";
+import Edit from "./Edit";
+import axios from "axios";
+
+type PostData = {
+    title: string;
+    category: string;
+    description: string;
+    price: number;
+    img: string[];
+};
 
 type CardProps = {
   id: string;
@@ -21,6 +30,7 @@ type CardProps = {
   img: string[];
   created_at: string;
   onDelete: () => void;
+  onProductUpdate: () => void;
 };
 
 const CardComponent = ({
@@ -32,9 +42,29 @@ const CardComponent = ({
   img,
   created_at,
   onDelete,
+  onProductUpdate,
 }: CardProps) => {
+    
   const [loading, setLoading] = useState<boolean>(false);
+  const [loading2, setLoading2] = useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const [productID, setProductID] = useState<string>("");
+  const [product, setProduct] = useState<PostData>({} as PostData);
+
+  const fetchProduct = async () => {
+    setLoading2(true);
+    try {
+      const res = await axios.get(`/api/post/${id}`);
+      const data = res.data;
+      console.log(data);
+      setProduct(data.post);
+    } catch (error) {
+      console.error("Error fetching product:", error);
+    } finally {
+        setLoading2(false);
+    }
+  };
 
   const deleteProduct = async (id: string, onDelete: () => void) => {
     setLoading(true);
@@ -51,6 +81,14 @@ const CardComponent = ({
       console.error("Error deleting product:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleEdit = (id: string) => {
+    fetchProduct();
+    setProductID(id);
+    if (!loading2) {
+      setOpen(true);
     }
   };
 
@@ -83,7 +121,6 @@ const CardComponent = ({
   };
 
   const alert = () => {
-    console.log("Alert");
     return (
       <Snackbar open={true} autoHideDuration={6000} onClose={() => setShowAlert(false)}>
         <Alert
@@ -99,11 +136,19 @@ const CardComponent = ({
 
   const Icons = () => (
     <div className="flex flex-row gap-20 items-center mt-4 justify-center">
-      <Button variant="outlined">
-        <IoPencil className="text-[20px] text-blue-500 cursor-pointer" />
+      <Button onClick={() => handleEdit(id)} variant="outlined">
+        {loading2 ? (
+          <div className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+        ) : (
+            <IoPencil className="text-[20px] text-blue-500 cursor-pointer" />
+        )}
       </Button>
       <Button variant="outlined" color="error" onClick={() => deleteProduct(id, onDelete)}>
-        <IoClose className="text-[25px] text-red-500 cursor-pointer" />
+        {loading ? (
+          <div className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+        ) : (
+          <IoClose className="text-[20px] text-red-500 cursor-pointer" />
+        )}
       </Button>
     </div>
   );
@@ -122,6 +167,10 @@ const CardComponent = ({
         </div>
       </div>
       {showAlert && alert()}
+
+      {!loading2 && (
+        <Edit product={product} setProduct={setProduct} open={open} setOpen={setOpen} id={productID} onProductUpdate={onProductUpdate} />
+      )}
     </div>
   );
 };

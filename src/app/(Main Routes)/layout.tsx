@@ -12,11 +12,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Quantity from './quantity'
 
 import Image from "next/image";
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+
   return (
     <html lang="en">
       <body>
@@ -56,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div>
             <Link href={'/cart'} className="lg:block hidden relative p-1 group hover:cursor-pointer overflow-hidden transition-all transform-gpu hover:scale-[1.20] duration-700">
               <div className="absolute top-0 right-0 bg-red-500 text-white rounded-full px-[4px] py-[2px] text-xs">
-                10
+                <Quantity />
               </div>
               <div className="bg-[#F1F1F1] rounded-full p-[10px]">
                 <PiShoppingCartSimple className="text-[25px]" />
@@ -74,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <DropdownMenuItem className="hover:cursor-pointer flex justify-between py-2">
                       <div>Open Cart</div>
                       <div className="bg-red-500 text-white rounded-full px-[4px] py-[2px] text-xs">
-                        10
+                        <Quantity />
                       </div>
                     </DropdownMenuItem>
                   </Link>

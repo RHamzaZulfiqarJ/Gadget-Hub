@@ -3,33 +3,36 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Card = ({
-  title,
-  description,
-  price,
-  src,
-  id,
-}: {
+type Product = {
   title: string;
   description: string;
-  price: string;
-  src: string;
+  price: number;
+  category: string;
+  img: string[];
   id: string;
-}) => {
+  created_at: string;
+};
+
+const Card = ({ title, description, price, category, img, id, created_at }: Product) => {
   return (
-    <div className="mt-4">
-      <div className="border-[1px] w-[280px] shadow-md p-2 flex flex-col gap-2 rounded-xl">
-        <div className="h-[210px] w-[260px] border-2 rounded-xl">
-          <Image height={200} width={200} src={src} alt="No Image Found" className="object-contain h-[210px] w-[260px] p-4" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <div>{title}</div>
-          <div className="font-light text-sm">{description}</div>
-          <div className="font-bold text-2xl">${price}</div>
-          <Link className="w-full" href={`/products/${id}`}>
-            <Button className="w-full">View</Button>
+    <div className="group relative block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 my-4">
+      <img
+        src={img[0]}
+        alt="No Image Found"
+        className="w-full object-cover transition duration-500 group-hover:scale-105"
+      />
+
+      <div className="relative border border-gray-100 bg-zinc-100 p-6">
+        <h3 className="mt-4 text-lg font-medium text-gray-900 truncate">{title}</h3>
+        <p className="mt-1.5 text-sm text-gray-700">${price}</p>
+
+        <form className="mt-4">
+          <Link href={`/products/${id}`}>
+            <Button className="block w-full">
+              View
+            </Button>
           </Link>
-        </div>
+        </form>
       </div>
     </div>
   );

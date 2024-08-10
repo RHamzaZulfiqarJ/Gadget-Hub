@@ -8,6 +8,7 @@ import Create from "./Create";
 import { Input } from "@/components/ui/input";
 import CardComponent from "./Card";
 import axios from "axios";
+import Edit from "./Edit";
 
 type Product = {
   id: string;
@@ -19,7 +20,7 @@ type Product = {
   created_at: string;
 };
 
-const page = () => {
+const Page = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [data, setData] = useState<Product[]>([]);
   const [filteredData, setFilteredData] = useState<Product[]>([]); // State for filtered data
@@ -63,8 +64,6 @@ const page = () => {
       setLoading(false);
     }
   };
-
-  
 
   return (
     <div>
@@ -112,6 +111,7 @@ const page = () => {
                 img={product.img}
                 created_at={product.created_at}
                 onDelete={() => getData()}
+                onProductUpdate={() => getData()}
               />
             ))
           }
@@ -122,10 +122,10 @@ const page = () => {
         </div>
       )}
 
-      <Create open={open} setOpen={setOpen} />
+      <Create open={open} setOpen={setOpen} onProductAdded={getData} />
 
     </div>
   );
 };
 
-export default page;
+export default Page;

@@ -15,7 +15,7 @@ type ContactUs = {
   message: string;
 };
 
-const contactus = () => {
+const Contactus = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<ContactUs>({
@@ -184,4 +184,4 @@ const contactus = () => {
   );
 };
 
-export default contactus;
+export default Contactus;

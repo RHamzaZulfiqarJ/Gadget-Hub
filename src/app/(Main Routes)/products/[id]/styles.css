@@ -6,7 +6,13 @@ body {
 }
 
 .swiper {
-  width: 80%;
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .swiper {
+    width: 100%;
+  }
 }
 
 .swiper-slide {
@@ -14,10 +20,10 @@ body {
   background-size: cover;
   width: 400px;
   height: 400px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .swiper-slide img {
+  object-fit: contain;
   display: block;
-  width: 100%;
 }

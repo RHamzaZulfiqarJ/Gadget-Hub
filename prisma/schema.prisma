@@ -10,6 +10,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model cart {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  postId      String
+  quantity    Int
+  total       Int
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
 model post {
   id            String @id @default(auto()) @map("_id") @db.ObjectId
   title         String
