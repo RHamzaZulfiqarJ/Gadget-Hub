@@ -20,7 +20,7 @@ export const DELETE = async (req: Request) => {
     finally {
         await prisma.$disconnect();
     }
-}
+} 
 
 export const OPTIONS = async (req: Request) => {
     try {
