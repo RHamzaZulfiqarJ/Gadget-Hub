@@ -10,15 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model cart {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  postId      String
-  quantity    Int
-  total       Int
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-}
-
 model post {
   id            String @id @default(auto()) @map("_id") @db.ObjectId
   title         String
@@ -39,4 +30,21 @@ model contact {
   message     String
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
+}
+
+model order {
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  firstName         String
+  lastName          String
+  email             String
+  phone             String
+  homeAddress       String
+  shippingAddress   String
+  city              String
+  code              String
+  paymentType       String
+  attachment        String
+  items             Json[]
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
 }

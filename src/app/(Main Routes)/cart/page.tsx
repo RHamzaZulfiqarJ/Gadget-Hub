@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Orders from "./Orders";
 import { useGlobalState } from "@/context/GlobalStateContext";
 import Load from "./Load";
+import Link from "next/link";
 
 type CartItem = {
   id: string;
@@ -86,9 +87,11 @@ const Cart = () => {
                   <div className="text-lg">Sub Total</div>
                   <div className="text-lg">${total}</div>
                 </div>
+                <Link href={'/checkout'}>
                 <Button className="bg-[#212121] rounded-none w-full text-base flex items-center gap-2">
                   Proceed To Checkout
                 </Button>
+                </Link>
               </div>
             </div>
           )}
