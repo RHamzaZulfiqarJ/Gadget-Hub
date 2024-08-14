@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { PiShoppingCartBold } from "react-icons/pi";
 import Load from "../Load";
 import { useGlobalState } from "@/context/GlobalStateContext";
+import { toast } from "sonner";
 
 type Product = {
   id: string;
@@ -41,10 +42,10 @@ async function fetchProductData(id: string): Promise<Product> {
 async function BlogDetail({ params }: any) {
 
   const {cart, setCart} = useGlobalState();      // Custom hook to access global state
-
   const [activeSize, setActiveSize] = useState<string>('M');
   const [count, setCount] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
+  const [cartLoading, setCartLoading] = useState<boolean>(false);
   const [data, setData] = useState<Product>({
     id: "",
     title: "",
@@ -72,31 +73,40 @@ async function BlogDetail({ params }: any) {
   }, [params.id]);
 
   const addToCart = () => {
-    const product = {
-      id: data.id,
-      title: data.title,
-      category: data.category,
-      price: data.price,
-      img: data.img,
-      size: activeSize,
-      quantity: count
-    }
-
-    let newCart = [...cart];
-    let itemInCart = false;
-
-    newCart.forEach((item, index) => {
-      if (item.id === product.id && item.size === product.size) {
-        newCart[index].quantity += product.quantity;
-        itemInCart = true;
+    setCartLoading(true);
+    try {
+      const product = {
+        id: data.id,
+        title: data.title,
+        category: data.category,
+        price: data.price,
+        img: data.img,
+        size: activeSize,
+        quantity: count
       }
-    });
+  
+      let newCart = [...cart];
+      let itemInCart = false;
+  
+      newCart.forEach((item, index) => {
+        if (item.id === product.id && item.size === product.size) {
+          newCart[index].quantity += product.quantity;
+          itemInCart = true;
+        }
+      });
+  
+      if (!itemInCart) {
+        newCart.push(product);
+      }
+  
+      setCart(newCart);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setCartLoading(false);
+      toast.success('Product Successfully added to cart!!!');jubemuvin
 
-    if (!itemInCart) {
-      newCart.push(product);
     }
-
-    setCart(newCart);
   }
 
   return (
@@ -148,7 +158,7 @@ async function BlogDetail({ params }: any) {
                 <div className="flex gap-4 items-center mt-3">
                   <Button onClick={addToCart} className="bg-[#212121] rounded-none h-[50px] font-semibold text-base flex items-center gap-2">
                     <PiShoppingCartBold className="text-[25px]" />
-                    Add To Cart
+                    {cartLoading ? <Load /> : "Add to Cart"}
                   </Button>
                   <div className="text-2xl font-extrabold">$ {count * data.price}</div>
                 </div>

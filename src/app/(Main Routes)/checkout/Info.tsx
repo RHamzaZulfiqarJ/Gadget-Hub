@@ -64,8 +64,6 @@ export default function Info(
 ) {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [checked, setChecked] = React.useState(false);
-  const [value, setValue] = React.useState("1");
-
   
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
@@ -145,10 +143,6 @@ export default function Info(
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
-  };
-
-  const handleChangeTab = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
