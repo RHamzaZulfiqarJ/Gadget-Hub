@@ -104,7 +104,7 @@ async function BlogDetail({ params }: any) {
       console.log(error);
     } finally {
       setCartLoading(false);
-      toast.success('Product Successfully added to cart!!!');jubemuvin
+      toast.success('Product Successfully added to cart!!!');
 
     }
   }
