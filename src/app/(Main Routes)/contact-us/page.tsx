@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { CiPhone, CiMail, CiLocationOn } from "react-icons/ci";
 import { Alert, Snackbar } from "@mui/material";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 type ContactUs = {
   firstName: string;
@@ -16,7 +17,6 @@ type ContactUs = {
 };
 
 const Contactus = () => {
-  const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<ContactUs>({
     firstName: "",
@@ -47,10 +47,6 @@ const Contactus = () => {
         body: JSON.stringify(data),
       });
       const result = await res.json();
-      if (res.status == 201) {
-        setOpen(true);
-      }
-      console.log(result, res.status);
       setData({
         firstName: "",
         lastName: "",
@@ -62,16 +58,12 @@ const Contactus = () => {
       console.log(error, "An error has occured");
     } finally {
       setLoading(false);
+      toast.success("Response Submitted Successfully! We will contact you soon.");
     }
-    // } else {
-    //   alert("Please fill all the fields");
-    // }
   };
 
   return (
-    <div
-      onClick={() => setOpen(false)}
-      className="mt-10 mb-32 mx-[10%] flex justify-center font-primary">
+    <div className="mt-10 mb-32 mx-[10%] flex justify-center font-primary">
       <div className="flex flex-col">
         <div className="text-3xl font-extrabold">Contact Us</div>
         <div className="flex xl:flex-row flex-col gap-32 mt-10">
@@ -147,15 +139,6 @@ const Contactus = () => {
                 Submit
               </Button>
             </div>
-            <Snackbar open={open} autoHideDuration={6000} onClose={() => setOpen(false)}>
-              <Alert
-                onClose={() => setOpen(false)}
-                severity="success"
-                variant="filled"
-                sx={{ width: "100%" }}>
-                Response Submitted Successfully! We will contact you soon.
-              </Alert>
-            </Snackbar>
           </div>
           <div className="flex flex-col gap-8">
             <div className="text-5xl font-bold">How Can We Help ?</div>

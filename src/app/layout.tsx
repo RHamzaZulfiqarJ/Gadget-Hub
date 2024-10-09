@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body className={inter.className}>
         <GlobalStateProvider>
           {children}
-          <Toaster richColors position="top-right" />
+          <Toaster closeButton richColors position="top-right" />
         </GlobalStateProvider>
       </body>
     </html>

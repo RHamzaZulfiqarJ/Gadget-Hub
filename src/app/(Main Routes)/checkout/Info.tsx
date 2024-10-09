@@ -73,8 +73,9 @@ export default function Info(
   const [shippingAddress, setShippingAddress] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [code, setCode] = useState<string>("");
-  const [paymentType, setPaymentType] = useState<string>("");
+  const [paymentType, setPaymentType] = useState<string>("cash");
   const [attachment, setAttachment] = useState<File>({} as File);
+  const [status, setStatus] = useState<string>("Pending");
   const [items, setItems] = useState<object[]>([]);
 
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -114,7 +115,12 @@ export default function Info(
       formData.append("city", city);
       formData.append("code", code);
       formData.append("paymentType", paymentType);
-      formData.append("attachment", attachment);
+      if (attachment) {
+        formData.append("attachment", attachment);
+      } else {
+        formData.append("attachment", "");
+      }
+      formData.append("status", status);
       formData.append("items", JSON.stringify(cart));
 
       const res = await axios.post("/api/order", formData);

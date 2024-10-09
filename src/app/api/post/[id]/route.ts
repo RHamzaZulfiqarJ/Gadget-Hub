@@ -54,7 +54,6 @@ export const DELETE = async (req: Request) => {
   }
 };
 
-
 export const PUT = async (req: NextRequest) => {
 
     const formData = await req.formData();

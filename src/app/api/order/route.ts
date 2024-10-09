@@ -23,14 +23,15 @@ export const POST = async (req: NextRequest) => {
     const paymentType = formData.get('paymentType') as string;
     const attachment = formData.get('attachment') as File;
     const items = JSON.parse(formData.get('items') as string) as object[];
+    const status = formData.get('status') as string;
 
-    if (!firstName || !lastName || !email || !phone || !homeAddress || !shippingAddress || !city || !code || !paymentType) {
+    if (!firstName || !lastName || !email || !phone || !homeAddress || !shippingAddress || !city || !code || !paymentType || !items || !status) {
       return NextResponse.json({ message: 'Please fill all the fields' }, { status: 400 });
     }
 
     let imageUrl: string = "";
 
-    if (attachment) {
+    if (attachment && typeof attachment.arrayBuffer === 'function') {
       const buffer = Buffer.from(await attachment.arrayBuffer());
       try {
         const uploadedImage: UploadApiResponse = await new Promise((resolve, reject) => {
@@ -65,6 +66,7 @@ export const POST = async (req: NextRequest) => {
           paymentType,
           attachment: imageUrl,
           items,
+          status,
         },
       });
 
@@ -79,3 +81,14 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ message: 'Something went wrong', error }, { status: 500 });
   }
 };
+
+export const GET = async (req: NextRequest) => {
+  try {
+    const orders = await prisma.order.findMany();
+
+    return NextResponse.json({ orders }, { status: 200 });
+  } catch (error) {
+    console.error('Unexpected error:', error);
+    return NextResponse.json({ message: 'Something went wrong', error }, { status: 500 });
+  }
+}

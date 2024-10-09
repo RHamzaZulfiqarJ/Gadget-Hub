@@ -45,6 +45,7 @@ model order {
   paymentType       String
   attachment        String
   items             Json[]
+  status            String
   created_at        DateTime @default(now())
   updated_at        DateTime @updatedAt
 }

@@ -20,7 +20,7 @@ import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body>
         <header className="flex overflow-x-hidden items-center justify-between w-full py-8 font-primary px-10">
           <Link href="/home">
