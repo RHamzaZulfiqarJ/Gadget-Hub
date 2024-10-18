@@ -1,10 +1,8 @@
-"use client"
+"use client";
 
-import { Input } from '@/components/ui/input'
-import { Tooltip } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { IoAddSharp } from 'react-icons/io5'
-import { DataTableDemo } from './Table'
+import React, { useEffect, useState } from "react";
+import { DataTableDemo } from "./Table";
+import Load from "@/app/(Main Routes)/cart/Load";
 
 type Orders = {
   id: string;
@@ -19,19 +17,22 @@ type Orders = {
   paymentType: string;
   attachment: string;
   items: [];
-}
+};
 
 const Page = () => {
-
   const [data, setData] = useState<Orders[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const getData = async () => {
+    setLoading(true);
     try {
       const res = await fetch("/api/order");
       const result = await res.json();
       setData(result.orders);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -43,21 +44,16 @@ const Page = () => {
     <div>
       <div className="flex flex-row justify-between pb-10">
         <h1 className="text-2xl font-primary">Orders</h1>
-        <div className="flex flex-row gap-10">
-          {/* <div>
-            <Input
-              placeholder="Search"
-              // value={searchTerm}
-              // onChange={handleSearch}
-            />
-          </div> */}
-        </div>
+        <div className="flex flex-row gap-10"></div>
       </div>
 
-      <DataTableDemo data={data} />
-
+      {loading ? (
+        <Load />
+      ) : (
+        <DataTableDemo initialData={data} />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default  Page
+export default Page;
