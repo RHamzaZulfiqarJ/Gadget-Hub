@@ -36,10 +36,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import moment from "moment";
-import ViewOrder from "./ViewOrder";
 import Link from "next/link";
-
-
 
 export type Order = {
   id: string;
