@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+"use client";
+
+import React, { useState } from "react";
+
 import "../globals.css";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
@@ -16,8 +18,11 @@ import Quantity from './quantity'
 
 import Image from "next/image";
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6";
+import VerifyAdmin from "./VerifyAdmin";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <html suppressHydrationWarning lang="en">
@@ -102,7 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
 
         <footer>
-          <div className="overflow-x-hidden px-[8%] my-20 md:flex-row flex-col flex gap-4 justify-around">
+          <div className="overflow-x-hidden px-[8%] mt-20 md:flex-row flex-col flex gap-4 justify-around">
             <div className="flex flex-col gap-8">
               <div>
                 <Image src="/Logo.png" alt="No Image Found" height={30} width={180} />
@@ -170,6 +175,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
 
+          <div className="flex justify-center my-10">
+            <div onClick={() => setOpen(true)} className="text-center w-52 cursor-pointer rounded-2xl border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none">
+              Admin Panel
+            </div>
+          </div>
+
           <div className="border-t-[1px] lg:text-lg text-[#666666] border-t-black w-screen p-6 flex md:flex-row flex-col justify-center md:justify-around">
             <div>Copyright © 2022 Dine Market</div>
             <div>
@@ -180,6 +191,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+
+        <VerifyAdmin open={open} setOpen={setOpen} />
+
       </body>
     </html>
   );

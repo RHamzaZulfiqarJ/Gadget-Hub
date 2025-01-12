@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { PiShoppingCartBold, PiShoppingCartSimple } from "react-icons/pi";
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -14,15 +15,19 @@ const page = () => {
           <div className="bg-[#E1EDFF] text-[#0000FF] h-[40px] w-[120px] rounded-md flex justify-center items-center font-semibold">
             Sale 70%
           </div>
-          <div className="font-extrabold sm:text-6xl text-5xl">An Industrial Take on Streetwear</div>
+          <div className="font-extrabold sm:text-6xl text-5xl">
+            An Industrial Take on Streetwear
+          </div>
           <div className="text-[#7F6666] w-3/4">
             Anyone can beat you but no one can beat your outfit as long as you wear Dine outfits.
           </div>
           <div>
-            <Button className="bg-[#212121] rounded-none w-[210px] h-[60px] font-semibold text-base flex items-center gap-2">
-              <PiShoppingCartBold className="text-[25px]" />
-              Start Shopping
-            </Button>
+            <Link href={"/products"}>
+              <Button className="bg-[#212121] rounded-none w-[210px] h-[60px] font-semibold text-base flex items-center gap-2">
+                <PiShoppingCartBold className="text-[25px]" />
+                Start Shopping
+              </Button>
+            </Link>
           </div>
           <div className="flex items-center sm:gap-10 gap-8 mt-2">
             <Image src="/Featured1.png" height={25} width={95} alt="Image not found" />
@@ -51,7 +56,9 @@ const page = () => {
         <div className="text-[#0062F5] font-primary font-semibold text-sm tracking-widest">
           PROMOTIONS
         </div>
-        <div className="text-[#212121] text-4xl font-extrabold text-center">Our Promotions Events</div>
+        <div className="text-[#212121] text-4xl font-extrabold text-center">
+          Our Promotions Events
+        </div>
         <div className="flex xl:flex-row flex-col items-center justify-center gap-4">
           <div className="flex flex-col items-center md:gap-[10px]">
             <div className="scale-100 md:w-[650px] md:h-[200px] flex items-center justify-center w-full h-[150px] bg-[#D6D6D8] group overflow-hidden transition-all transform-gpu hover:scale-[1.05] duration-700">
@@ -63,7 +70,13 @@ const page = () => {
                   <div className="font-light text-lg tracking-wider">For the summer season</div>
                 </div>
                 <div>
-                  <Image className="md:block hidden" src="/event1.webp" height={220} width={260} alt="No Image found" />
+                  <Image
+                    className="md:block hidden"
+                    src="/event1.webp"
+                    height={220}
+                    width={260}
+                    alt="No Image found"
+                  />
                 </div>
               </div>
             </div>
@@ -145,10 +158,14 @@ const page = () => {
       {/* Section 4 */}
 
       <div className="px-[10%] flex justify-center my-32">
-        <div className="opacity-5 md:text-[8rem] text-[6rem] text-center font-extrabold">Newsletter</div>
+        <div className="opacity-5 md:text-[8rem] text-[6rem] text-center font-extrabold">
+          Newsletter
+        </div>
         <div className="absolute flex flex-col gap-6 items-center text-center -mb-6">
           <div className="text-4xl font-extrabold">Subscribe Our Newsletter</div>
-          <div className="font-light w-11/12">Get the latest information and promo offers directly</div>
+          <div className="font-light w-11/12">
+            Get the latest information and promo offers directly
+          </div>
           <div className="flex justify-center w-11/12 max-w-sm items-center space-x-2">
             <Input
               className="bg-transparent border-[1px] border-black"
@@ -159,7 +176,6 @@ const page = () => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };

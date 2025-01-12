@@ -53,3 +53,35 @@ export const DELETE = async (req: Request) => {
     await prisma.$disconnect();
   }
 };
+
+export const PUT = async (req: NextRequest) => {
+  try {
+    const id = req.url.split("/api/order/")[1]?.replace("/", "");
+    if (!id) {
+      return NextResponse.json({ message: "Invalid ID" }, { status: 400 });
+    }
+
+    const { status } = await req.json();
+    if (!status) {
+      return NextResponse.json({ message: "Status is required" }, { status: 400 });
+    }
+
+    console.log(`Updating order with ID: ${id} to status: ${status}`);
+    await connectDatabase();
+
+    const order = await prisma.order.update({
+      where: {
+        id: id,
+      },
+      data: {
+        status,
+      },
+    });
+
+    return NextResponse.json({ order }, { status: 200 });
+  } catch (err) {
+    console.error("Error updating order:", err);
+    return NextResponse.json({ message: "Something went wrong", error: err }, { status: 500 });
+  }
+}
+

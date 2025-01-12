@@ -54,7 +54,7 @@ const Products = () => {
             columnClassName="pl-5 bg-clip-padding"
           >
             {
-              data.map((product: Product) => (
+              data?.map((product: Product) => (
                 <Card
                   key={product.id}
                   id={product.id}

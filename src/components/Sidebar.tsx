@@ -37,7 +37,7 @@ const Sidebar = () => {
           selected={selected}
           setSelected={setSelected}
           open={open}
-          link="/admin/panel/key"
+          link="/admin/panel/dnY1saRBTAmVlUAULSo0QXRDiv80hBAZ5SWoHv9noMxehvb4Ft"
         />
         <Option
           Icon={FiDollarSign}
@@ -61,7 +61,7 @@ const Sidebar = () => {
           selected={selected}
           setSelected={setSelected}
           open={open}
-          link="/admin/panel/key/products"
+          link="/admin/panel/dnY1saRBTAmVlUAULSo0QXRDiv80hBAZ5SWoHv9noMxehvb4Ft/products"
         />
         <Option
           Icon={FiTag}
@@ -69,7 +69,7 @@ const Sidebar = () => {
           selected={selected}
           setSelected={setSelected}
           open={open}
-          link="/admin/panel/key/orders"
+          link="/admin/panel/dnY1saRBTAmVlUAULSo0QXRDiv80hBAZ5SWoHv9noMxehvb4Ft/orders"
         />
         <Option
           Icon={FiBarChart}
@@ -77,7 +77,7 @@ const Sidebar = () => {
           selected={selected}
           setSelected={setSelected}
           open={open}
-          link="/admin/panel/key/messages"
+          link="/admin/panel/dnY1saRBTAmVlUAULSo0QXRDiv80hBAZ5SWoHv9noMxehvb4Ft/messages"
         />
         <Option
           Icon={FiUsers}

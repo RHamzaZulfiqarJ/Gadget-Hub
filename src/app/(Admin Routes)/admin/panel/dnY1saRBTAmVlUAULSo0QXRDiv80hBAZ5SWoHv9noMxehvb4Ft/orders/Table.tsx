@@ -36,7 +36,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import moment from "moment";
-import Link from "next/link";
+import ViewOrder from "./ViewOrder";
+import ChangeStatus from "./ChangeStatus";
+
+
 
 export type Order = {
   id: string;
@@ -50,6 +53,7 @@ export type Order = {
   code: string;
   paymentType: string;
   attachment: string;
+  status: string;
   items: [];
 };
 
@@ -62,6 +66,10 @@ export function DataTableDemo({ initialData }: { initialData: Order[] }) {
 
   const [openView, setOpenView] = React.useState(false);
   const [viewId, setViewId] = React.useState<string>("");
+
+  const [openStatus, setOpenStatus] = React.useState<boolean>(false);
+  const [statusId, setStatusId] = React.useState<string>("");
+  const [currStatus, setCurrStatus] = React.useState<string>("");
 
   React.useEffect(() => {
     setData(initialData);
@@ -222,11 +230,9 @@ export function DataTableDemo({ initialData }: { initialData: Order[] }) {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions Menu</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <Link href={`/admin/panel/key/orders/${order.id}`}>
-                <DropdownMenuItem className="text-blue-400 hover:text-blue-500 flex items-center gap-2 cursor-pointer"><PiArrowSquareOut className="text-lg" /> View Order</DropdownMenuItem>
-              </Link>
+              <DropdownMenuItem onClick={() => handleOpenView(order.id)} className="text-blue-400 hover:text-blue-500 flex items-center gap-2 cursor-pointer"><PiArrowSquareOut className="text-lg" /> View Order</DropdownMenuItem>
               <DropdownMenuItem onClick={() => handleDelete(order.id)} className="text-red-400 hover:text-red-500 flex items-center gap-2 cursor-pointer"><PiTrash className="text-lg" /> Delete Order</DropdownMenuItem>
-              <DropdownMenuItem className="text-green-400 hover:text-green-500 flex items-center gap-2 cursor-pointer"><PiPencilSimple className="text-lg" /> Update Status</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleOpenStatus(order.id, order.status)} className="text-green-400 hover:text-green-500 flex items-center gap-2 cursor-pointer"><PiPencilSimple className="text-lg" /> Update Status</DropdownMenuItem>
               <DropdownMenuItem className="text-yellow-400 hover:text-yellow-500 flex items-center gap-2 cursor-pointer"><PiArchive className="text-lg" /> Archive</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -266,6 +272,25 @@ export function DataTableDemo({ initialData }: { initialData: Order[] }) {
       console.error("Error deleting order:", result);
     }
   }
+
+  const handleOpenView = (id: string) => {
+    setOpenView(true);
+    setViewId(id);
+  }
+
+  const handleOpenStatus = (id: string, status: string) => {
+    setOpenStatus(true);
+    setStatusId(id);
+    setCurrStatus(status);
+  }
+
+  const handleStatusUpdate = (id: string, newStatus: string) => {
+    setData((prevData) =>
+      prevData.map((order) =>
+        order.id === id ? { ...order, status: newStatus } : order
+      )
+    );
+  };
 
   return (
     <div className="w-full">
@@ -361,6 +386,8 @@ export function DataTableDemo({ initialData }: { initialData: Order[] }) {
         </div>
       </div>
 
+      <ViewOrder open={openView} setOpen={setOpenView} id={viewId} />
+      <ChangeStatus open={openStatus} setOpen={setOpenStatus} id={statusId} status={currStatus} onStatusUpdate={handleStatusUpdate} />
     </div>
   );
 }
