@@ -16,6 +16,7 @@ type Orders = {
   code: string;
   paymentType: string;
   attachment: string;
+  status: string;
   items: [];
 };
 
