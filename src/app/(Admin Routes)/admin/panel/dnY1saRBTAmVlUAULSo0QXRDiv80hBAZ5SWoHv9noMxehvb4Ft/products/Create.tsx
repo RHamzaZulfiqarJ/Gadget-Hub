@@ -69,7 +69,18 @@ export default function Create({
     }
   };
 
-  const Categories = ["Fancy", "Casual", "Formal", "Sports", "Party", "Wedding"];
+  const Categories = [
+    "Power bank",
+    "Airpods",
+    "Headphones",
+    "Handfree",
+    "Charger",
+    "Data cable",
+    "Alfa",
+    "USB",
+    "Digital watches",
+    "Memory cards"
+  ];
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>

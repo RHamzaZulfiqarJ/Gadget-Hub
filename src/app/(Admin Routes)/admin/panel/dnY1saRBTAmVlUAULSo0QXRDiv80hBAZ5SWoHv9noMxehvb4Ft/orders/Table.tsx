@@ -206,9 +206,13 @@ export function DataTableDemo({ initialData }: { initialData: Order[] }) {
       },
       cell: ({ row }) => (
         <div
-          className={`ml-4 border-[1px] rounded-full p-2 w-min capitalize ${
-            row.getValue("status") == "Pending" ? "text-yellow-500 border-yellow-500" : ""
-          }`}>
+          className={`ml-4 border-[1px] rounded-full p-2 w-min capitalize 
+            ${row.getValue("status") == "Pending" ? "text-yellow-500 border-yellow-500" : ""}
+            ${row.getValue("status") == "Processing" ? "text-blue-500 border-blue-500" : ""}
+            ${row.getValue("status") == "Shipped" ? "text-green-500 border-green-500" : ""}
+            ${row.getValue("status") == "Delivered" ? "text-green-500 border-green-500" : ""}
+            ${row.getValue("status") == "Cancelled" ? "text-red-500 border-red-500" : ""}
+          `}>
           {row.getValue("status")}
         </div>
       ),

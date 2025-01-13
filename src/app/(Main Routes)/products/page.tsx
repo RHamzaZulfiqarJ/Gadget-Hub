@@ -18,6 +18,7 @@ type Product = {
 const Products = () => {
   const [data, setData] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
 
   useEffect(() => {
     getProducts();
@@ -36,14 +37,53 @@ const Products = () => {
     }
   };
 
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const filteredProducts = selectedCategory
+    ? data.filter((product) => product.category === selectedCategory)
+    : data;
+
+    const Categories = [
+      "Power bank",
+      "Airpods",
+      "Headphones",
+      "Handfree",
+      "Charger",
+      "Data cable",
+      "Alfa",
+      "USB",
+      "Digital watches",
+      "Memory cards"
+    ];
+
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
-    700: 2
+    700: 2,
   };
 
   return (
     <div className="pb-[8%] px-[5%]">
+      {/* Dropdown for category filter */}
+      <div className="mb-4">
+        <label htmlFor="category" className="mr-2">Filter by Category:</label>
+        <select
+          id="category"
+          value={selectedCategory}
+          onChange={handleCategoryChange}
+          className="p-2 border rounded"
+        >
+          <option value="">All Categories</option>
+          {Categories.map((category: string) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
+
       {
         loading ? (
           <Load />
@@ -54,7 +94,7 @@ const Products = () => {
             columnClassName="pl-5 bg-clip-padding"
           >
             {
-              data?.map((product: Product) => (
+              filteredProducts?.map((product: Product) => (
                 <Card
                   key={product.id}
                   id={product.id}

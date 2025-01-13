@@ -162,7 +162,7 @@ const CardComponent = ({
         <div className="flex flex-col gap-2">
           <div>{title}</div>
           <div className="font-light text-sm">{description}</div>
-          <div className="font-bold text-2xl">${price}</div>
+          <div className="font-bold text-2xl">Rs. {price}</div>
           <Icons />
         </div>
       </div>

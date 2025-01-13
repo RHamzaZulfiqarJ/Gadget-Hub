@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <header className="flex overflow-x-hidden items-center justify-between w-full py-8 font-primary px-10">
           <Link href="/home">
-            <Image width={150} height={50} className="-mt-2" src="/Logo.png" alt="No Image found" />
+            <Image width={100} height={35} className="-mt-2" src="/Logo.png" alt="No Image found" />
           </Link>
           <div className="hidden gap-12 lg:flex">
             <Link
@@ -113,8 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Image src="/Logo.png" alt="No Image Found" height={30} width={180} />
               </div>
               <div className="text-[#666666] w-[360px] ">
-                Small, artisan label that offers a thoughtfully curated collection of high quality
-                everyday essentials made.
+                Step into a world of cutting-edge gadgets and innovative technology, crafted to elevate your lifestyle and redefine convenience.
               </div>
               <div className="flex gap-4 items-center">
                 <div className="relative p-1 group hover:cursor-pointer overflow-hidden transition-all transform-gpu hover:scale-[1.20] duration-700">

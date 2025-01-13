@@ -56,7 +56,7 @@ const ChangeStatus = ({
   const changeStatus = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/order/${id}`, {
+      await fetch(`/api/order/${id}`, {
         method: "PUT",
         body: JSON.stringify({ status: newStatus }),
         headers: {
@@ -71,13 +71,11 @@ const ChangeStatus = ({
     }
   }
 
-  console.log(newStatus)
-
   return (
     <>
       <Dialog open={open} onOpenChange={(isOpen) => setOpen(isOpen)}>
         {loading ? (
-          <DialogContent>
+          <DialogContent className="sm:max-w-md max-w-sm">
             <DialogHeader>
               <DialogTitle>Loading...</DialogTitle>
               <DialogDescription>

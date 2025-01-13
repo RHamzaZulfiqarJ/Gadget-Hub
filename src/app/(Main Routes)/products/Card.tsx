@@ -24,7 +24,7 @@ const Card = ({ title, description, price, category, img, id, created_at }: Prod
 
       <div className="relative border border-gray-100 bg-zinc-100 p-6">
         <h3 className="mt-4 text-lg font-medium text-gray-900 truncate">{title}</h3>
-        <p className="mt-1.5 text-sm text-gray-700">${price}</p>
+        <p className="mt-1.5 text-sm text-gray-700">Rs. {price}</p>
 
         <form className="mt-4">
           <Link href={`/products/${id}`}>

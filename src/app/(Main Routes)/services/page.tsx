@@ -18,8 +18,7 @@ const Service = () => {
                 What We Offer
               </h2>
               <p className="text-base text-body-color dark:text-dark-6">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+                We offer a wide range of tech essentials, including power banks, AirPods, headphones, chargers, data cables, USBs, digital watches, memory cards, and more to meet all your gadget needs.
               </p>
             </div>
           </div>
@@ -28,28 +27,28 @@ const Service = () => {
         <div className="-mx-4 flex flex-wrap">
           <ServiceCard
             title="Product Selection"
-            details="Discover a curated collection of clothing items that blend quality with style, offering something for every taste."
+            details="Explore a wide range of cutting-edge gadgets and accessories, from power banks to digital watches, designed to meet all your tech needs."
             icon={
               <IoBagOutline className="text-4xl text-white text-primary dark:text-primary" />
             }
           />
           <ServiceCard
             title="Customization Options"
-            details="Personalize your wardrobe with our bespoke customization services, adding unique touches to your garments."
+            details="Personalize your gadgets with our customization options, tailored to match your unique style and preferences."
             icon={
               <IoPencilOutline className="text-4xl text-white text-primary dark:text-primary" />
             }
           />
           <ServiceCard
             title="Fashion Consultations"
-            details="Elevate your style with expert advice from our seasoned stylists, tailored to enhance your individuality and keep you on-trend."
+            details="Get expert fashion consultations to discover styles that complement your personality and elevate your look."
             icon={
               <GiTie className="text-4xl text-white text-primary dark:text-primary" />
             }
           />
           <ServiceCard
-            title="Tailoring and Alterations"
-            details="Ensure the perfect fit with our precision tailoring and alteration services, enhancing comfort and confidence in every wear."
+            title="Personalization Services"
+            details="Enhance your tech experience with our customization services, offering personalized modifications and adjustments to suit your unique needs and preferences."
             icon={
               <CiRuler className="text-4xl text-white text-primary dark:text-primary" />
             }
@@ -62,7 +61,7 @@ const Service = () => {
             }
           />
           <ServiceCard
-            title="Fashion Events and Workshops"
+            title="Events and Workshops"
             details="Immerse yourself in dynamic fashion experiences, from runway showcases to hands-on workshops."
             icon={
               <CiUser className="text-4xl text-white text-primary dark:text-primary" />

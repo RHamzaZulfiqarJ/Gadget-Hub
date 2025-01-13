@@ -160,7 +160,7 @@ async function BlogDetail({ params }: any) {
                     <PiShoppingCartBold className="text-[25px]" />
                     {cartLoading ? <Load /> : "Add to Cart"}
                   </Button>
-                  <div className="text-2xl font-extrabold">$ {count * data.price}</div>
+                  <div className="text-2xl font-extrabold">Rs. {count * data.price}</div>
                 </div>
               </div>
             </div>

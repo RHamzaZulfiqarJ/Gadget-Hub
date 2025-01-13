@@ -10,41 +10,41 @@ const page = () => {
     <div className="font-primary overflow-x-hidden">
       {/* Section 1 */}
 
-      <div className="px-[8%] lg:flex block justify-between items-center gap-10">
-        <div className="flex flex-col gap-y-[45px]">
+      <div className="px-[5%] lg:flex block justify-between items-center gap-10">
+        <div className="flex flex-col gap-[45px]">
           <div className="bg-[#E1EDFF] text-[#0000FF] h-[40px] w-[120px] rounded-md flex justify-center items-center font-semibold">
-            Sale 70%
+            Sale 30%
           </div>
           <div className="font-extrabold sm:text-6xl text-5xl">
-            An Industrial Take on Streetwear
+            Tech Haven: Your Ultimate Gadget Destination
           </div>
           <div className="text-[#7F6666] w-3/4">
-            Anyone can beat you but no one can beat your outfit as long as you wear Dine outfits.
+          Step into a world of cutting-edge gadgets and innovative technology, crafted to elevate your lifestyle and redefine convenience.
           </div>
           <div>
-            <Link href={"/products"}>
+            <Link className="w-[210px] h-[60px]" href={"/products"}>
               <Button className="bg-[#212121] rounded-none w-[210px] h-[60px] font-semibold text-base flex items-center gap-2">
                 <PiShoppingCartBold className="text-[25px]" />
                 Start Shopping
               </Button>
             </Link>
           </div>
-          <div className="flex items-center sm:gap-10 gap-8 mt-2">
-            <Image src="/Featured1.png" height={25} width={95} alt="Image not found" />
+          <div className="flex items-center sm:gap-10 gap-5 mt-2 -ml-4">
+            <Image className="" src="/Featured1.png" height={25} width={95} alt="Image not found" />
             <Image src="/Featured2.png" height={25} width={95} alt="Image not found" />
             <Image src="/Featured3.png" height={25} width={95} alt="Image not found" />
             <Image src="/Featured4.png" height={25} width={95} alt="Image not found" />
           </div>
         </div>
         <div>
-          <div className="h-[590px] w-[590px] rounded-full bg-[#FFECE3] relative lg:block hidden"></div>
+          <div className="h-[590px] w-[590px] rounded-full bg-[#f6f6f6] relative lg:block hidden"></div>
           <div className="absolute top-[114px]">
             <Image
-              className="lg:block hidden"
-              src="/header.png"
+              className="lg:block hidden animate-zoom"
+              src="/Header.png"
               alt="Image not found"
-              width={640}
-              height={640}
+              width={600}
+              height={600}
             />
           </div>
         </div>
@@ -61,20 +61,20 @@ const page = () => {
         </div>
         <div className="flex xl:flex-row flex-col items-center justify-center gap-4">
           <div className="flex flex-col items-center md:gap-[10px]">
-            <div className="scale-100 md:w-[650px] md:h-[200px] flex items-center justify-center w-full h-[150px] bg-[#D6D6D8] group overflow-hidden transition-all transform-gpu hover:scale-[1.05] duration-700">
-              <div className="flex">
+            <div className="scale-100 md:w-[650px] md:h-[200px] flex md:items-center md:justify-center items-stretch justify-evenly w-full h-[300px] bg-[#f6bebe] group overflow-hidden transition-all transform-gpu hover:scale-[1.05] duration-700">
+              <div className="flex md:flex-row flex-col justify-evenly items-center w-full h-full">
                 <div className="flex flex-col items-center justify-center h-[200px] px-10">
                   <div className="md:text-3xl text-2xl font-bold">
-                    GET UP TO <span className="md:text-4xl text-3xl">60%</span>
+                    GET UP TO <span className="md:text-4xl text-3xl">30%</span>
                   </div>
-                  <div className="font-light text-lg tracking-wider">For the summer season</div>
+                  <div className="font-light text-lg tracking-wider">For the New Year Deal</div>
                 </div>
                 <div>
                   <Image
-                    className="md:block hidden"
-                    src="/event1.webp"
-                    height={220}
-                    width={260}
+                    className="md:mb-0 mb-10 object-contain"
+                    src="/event1.png"
+                    height={150}
+                    width={150}
                     alt="No Image found"
                   />
                 </div>
@@ -93,29 +93,29 @@ const page = () => {
           </div>
 
           <div className="md:flex xl:flex-none md:gap-4 md:mt-[10px] items-center justify-center">
-            <div className="scale-100 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#EFE1C7] flex flex-col justify-between group overflow-hidden transition-all transform-gpu hover:scale-105  duration-700">
-              <div className="p-8">
-                <div className="font-light text-lg">Flex Sweatshirt</div>
+            <div className="scale-100 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#242422] flex flex-col justify-evenly group overflow-hidden transition-all transform-gpu hover:scale-105  duration-700">
+              <div className="p-8 text-white">
+                <div className="font-light text-lg">Air Pods 2nd Gen</div>
                 <div className="flex items-center gap-3 mt-2">
                   <div className="font-light line-through">$100.00</div>
                   <div className="font-semibold">$75.00</div>
                 </div>
               </div>
-              <div className="flex justify-center">
-                <Image src="/event2.webp" height={300} width={220} alt="No Image found" />
+              <div className="flex justify-center items-center">
+                <Image src="/event2.png" height={300} width={220} alt="No Image found" />
               </div>
             </div>
 
-            <div className="md:mt-0 mt-4 scale-100 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#D7D7D9] group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
+            <div className="md:mt-0 mt-4 scale-100 h-[410px] xl:w-[280px] md:w-[317px] w-[280px] bg-[#ffeed3] group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
               <div className="p-8">
-                <div className="font-light text-lg">Flex Button Bomber</div>
+                <div className="font-light text-lg">X8 Ultra Bluetooth</div>
                 <div className="flex items-center gap-3 mt-2">
-                  <div className="font-light line-through">$100.00</div>
-                  <div className="font-semibold">$75.00</div>
+                  <div className="font-light line-through">Rs. 6000</div>
+                  <div className="font-semibold">Rs. 3999</div>
                 </div>
               </div>
               <div className="flex justify-center -mt-[1px]">
-                <Image src="/event3.webp" height={300} width={220} alt="No Image found" />
+                <Image src="/event3.png" height={300} width={300} alt="No Image found" />
               </div>
             </div>
           </div>
@@ -132,25 +132,25 @@ const page = () => {
 
         <div className="md:flex items-center justify-center gap-8">
           <div className="flex flex-col gap-2 hover:cursor-pointer group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
-            <div className="bg-[#D6D6D8] h-[320px] w-[300px]">
-              <Image src="/card1.png" alt="No Image found" height={400} width={380} />
+            <div className="bg-[#b5b5b7] h-[320px] w-[300px] pt-4">
+              <Image src="/card1.png" alt="No Image found" height={320} width={380} />
             </div>
-            <div className="font-bold mt-2">Brushed Raglan Sweatshirt</div>
-            <div className="font-bold text-lg">$195</div>
+            <div className="font-bold mt-2">MI 50W Power Bank 20000MAh</div>
+            <div className="font-bold text-lg">Rs. 11,299</div>
           </div>
           <div className="flex flex-col gap-2 md:mt-0 mt-8 hover:cursor-pointer group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
-            <div className="bg-[#EBE7E4] h-[320px] w-[300px]">
-              <Image src="/card3.png" alt="No Image found" height={400} width={380} />
-            </div>
-            <div className="font-bold mt-2">Cameryn Sash Tie Dress</div>
-            <div className="font-bold text-lg">$545</div>
-          </div>
-          <div className="md:hidden xl:flex md:mt-0 mt-8 hover:cursor-pointer flex-col gap-2 group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
-            <div className="bg-[#D6D6D8] h-[320px] w-[300px]">
+            <div className="bg-[#d9f2d1] h-[320px] w-[300px] pt-2">
               <Image src="/card2.png" alt="No Image found" height={400} width={380} />
             </div>
-            <div className="font-bold mt-2">Flex Sweatshirt</div>
-            <div className="font-bold text-lg">$175</div>
+            <div className="font-bold mt-2">Xiaomi Redmi Watch 5 Active</div>
+            <div className="font-bold text-lg">Rs. 8,599</div>
+          </div>
+          <div className="flex flex-col gap-2 md:mt-0 mt-8 hover:cursor-pointer group overflow-hidden transition-all transform-gpu hover:scale-105 duration-700">
+            <div className="bg-[#f8b5b5] h-[320px] w-[300px]">
+              <Image src="/card3.png" alt="No Image found" height={400} width={380} />
+            </div>
+            <div className="font-bold mt-2">M90 Pro TWS Gaming Earbuds</div>
+            <div className="font-bold text-lg">Rs. 1,399</div>
           </div>
         </div>
       </div>

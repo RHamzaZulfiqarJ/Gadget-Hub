@@ -155,11 +155,11 @@ const Option = ({
 const TitleSection = ({ open }: { open: boolean }) => {
   return (
     <div className="mb-3 border-b border-slate-300 pb-3">
-      <div className="flex cursor-pointer items-center justify-between rounded-md transition-colors">
+      <div className="flex cursor-pointer items-center justify-center rounded-md transition-colors w-full">
         {open ? (
-          <img src="/Logo.png" alt="logo" className="w-full px-6 py-1 rounded-md" />
+          <img src="/Logo.png" alt="logo" className="w-40 px-6 py-1 rounded-md" />
         ) : (
-          <img src="/Dine Market Icon.png" alt="logo" className="w-10 h-10 rounded-md" />
+          <img src="/Small-logo.png" alt="logo" className="w-10 h-10 rounded-md" />
         )}
       </div>
     </div>
