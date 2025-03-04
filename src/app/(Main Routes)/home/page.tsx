@@ -1,11 +1,23 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { PiShoppingCartBold, PiShoppingCartSimple } from "react-icons/pi";
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6";
 import Link from "next/link";
+import { useState } from 'react'
+import { toast } from "sonner";
 
-const page = () => {
+const Page = () => {
+
+  const [text] = useState<string>('GADGETHUBSALE');
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(text);
+    toast.success("Copied to clipboard");
+  };
+
   return (
     <div className="font-primary overflow-x-hidden">
       {/* Section 1 */}
@@ -13,7 +25,7 @@ const page = () => {
       <div className="px-[5%] lg:flex block justify-between items-center gap-10">
         <div className="flex flex-col gap-[45px]">
           <div className="bg-[#E1EDFF] text-[#0000FF] h-[40px] w-[120px] rounded-md flex justify-center items-center font-semibold">
-            Sale 30%
+            Sale 20%
           </div>
           <div className="font-extrabold sm:text-6xl text-5xl">
             Tech Haven: Your Ultimate Gadget Destination
@@ -22,12 +34,12 @@ const page = () => {
           Step into a world of cutting-edge gadgets and innovative technology, crafted to elevate your lifestyle and redefine convenience.
           </div>
           <div>
-            <Link className="w-[210px] h-[60px]" href={"/products"}>
-              <Button className="bg-[#212121] rounded-none w-[210px] h-[60px] font-semibold text-base flex items-center gap-2">
-                <PiShoppingCartBold className="text-[25px]" />
-                Start Shopping
-              </Button>
-            </Link>
+            <Button className="bg-[#212121] rounded-none w-[210px] h-[60px] font-semibold text-base flex flex-row justify-center">
+              <Link className="flex items-center justify-center gap-2 w-full" href={"/products"}>
+                  <PiShoppingCartBold className="text-[25px]" />
+                  Start Shopping
+              </Link>
+            </Button>
           </div>
           <div className="flex items-center sm:gap-10 gap-5 mt-2 -ml-4">
             <Image className="" src="/Featured1.png" height={25} width={95} alt="Image not found" />
@@ -65,7 +77,7 @@ const page = () => {
               <div className="flex md:flex-row flex-col justify-evenly items-center w-full h-full">
                 <div className="flex flex-col items-center justify-center h-[200px] px-10">
                   <div className="md:text-3xl text-2xl font-bold">
-                    GET UP TO <span className="md:text-4xl text-3xl">30%</span>
+                    GET UP TO <span className="md:text-4xl text-3xl">20%</span>
                   </div>
                   <div className="font-light text-lg tracking-wider">For the New Year Deal</div>
                 </div>
@@ -82,11 +94,11 @@ const page = () => {
             </div>
 
             <div className="md:mt-0 mt-4 scale-100 md:w-[650px] md:h-[200px] flex items-center justify-center w-full h-[150px] flex-col bg-[#212121] gap-4 group overflow-hidden transition-all transform-gpu hover:scale-[1.05] duration-700">
-              <div className="md:text-4xl text-3xl font-extrabold text-white">GET 30% Off</div>
+              <div className="md:text-4xl text-3xl font-extrabold text-white">GET 20% Off</div>
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div className="font-light text-white">USE PROMO CODE</div>
-                <div className="md:w-[310px] h-[40px] w-12/12 md:px-0 px-5 bg-[#474747] rounded-lg flex justify-center items-center text-white font-bold tracking-widest hover:cursor-pointer">
-                  DINEWEEKENDSALE
+                <div onClick={copyToClipboard} className="md:w-[310px] h-[40px] w-12/12 md:px-0 px-5 bg-[#474747] rounded-lg flex justify-center items-center text-white font-bold tracking-widest hover:cursor-pointer">
+                  {text}
                 </div>
               </div>
             </div>
@@ -97,8 +109,8 @@ const page = () => {
               <div className="p-8 text-white">
                 <div className="font-light text-lg">Air Pods 2nd Gen</div>
                 <div className="flex items-center gap-3 mt-2">
-                  <div className="font-light line-through">$100.00</div>
-                  <div className="font-semibold">$75.00</div>
+                  <div className="font-light line-through">Rs. 4000</div>
+                  <div className="font-semibold">Rs. 2599</div>
                 </div>
               </div>
               <div className="flex justify-center items-center">
@@ -110,8 +122,8 @@ const page = () => {
               <div className="p-8">
                 <div className="font-light text-lg">X8 Ultra Bluetooth</div>
                 <div className="flex items-center gap-3 mt-2">
-                  <div className="font-light line-through">Rs. 6000</div>
-                  <div className="font-semibold">Rs. 3999</div>
+                  <div className="font-light line-through">Rs. 5000</div>
+                  <div className="font-semibold">Rs. 2999</div>
                 </div>
               </div>
               <div className="flex justify-center -mt-[1px]">
@@ -180,4 +192,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

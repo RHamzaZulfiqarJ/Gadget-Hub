@@ -1,5 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
@@ -8,6 +6,122 @@ generator client {
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+model dashboard {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  Logo String
+  Sale String
+  MainTitle String
+  MainTitleColor String
+  MainDescription String
+  MainDescriptionColor String
+  MainPhoto String
+  MainButtonText String
+  MainButtonTextColor String
+  MainButtonColor String
+  MainLogo1 String
+  MainLogo2 String
+  MainLogo3 String
+  MainLogo4 String
+  PromotionMiniTitle String
+  PromotionMiniTitleColor String
+  PromotionTitle String
+  PromotionTitleColor String
+  PromotionBox1Color String
+  PromotionBox1Title String
+  PromotionBox1TitleColor String
+  PromotionBox1Description String
+  PromotionBox1DescriptionColor String
+  PromotionBox1Photo String
+  PromotionBox2Color String
+  PromotionBox2Title String
+  PromotionBox2TitleColor String
+  PromotionBox2Description String
+  PromotionBox2DescriptionColor String
+  PromoCode String
+  PromoCodeColor String
+  PromoCodeBoxColor String
+  PromotionBox3Color String
+  PromotionBox3Photo String
+  PromotionBox3Title String
+  PromotionBox3TitleColor String
+  PromotionBox3ActualPrice String
+  PromotionBox3ActualPriceColor String
+  PromotionBox3DiscountPrice String
+  PromotionBox3DiscountPriceColor String
+  PromotionBox4Color String
+  PromotionBox4Photo String
+  PromotionBox4Title String
+  PromotionBox4TitleColor String
+  PromotionBox4ActualPrice String
+  PromotionBox4ActualPriceColor String
+  PromotionBox4DiscountPrice String
+  PromotionBox4DiscountPriceColor String
+  SpecialProductTitle String
+  SpecialProductTitleColor String
+  SpecialProduct Json[]
+  NewsLetterTitle String
+  NewsLetterTitleColor String
+  NewsLetterDescription String
+  NewsLetterDescriptionColor String
+  FooterDescription String
+  FooterDescriptionColor String
+  Link1 String
+  Link1Logo String
+  Link2 String
+  Link2Logo String
+  Link3 String
+  Link3Logo String
+  Col1Heading String
+  Col1Link1 String
+  Col1Link1Title String
+  Col1Link1Color String
+  Col1Link2 String
+  Col1Link2Title String
+  Col1Link2Color String
+  Col1Link3 String
+  Col1Link3Title String
+  Col1Link3Color String
+  Col1Link4 String
+  Col1Link4Title String
+  Col1Link4Color String
+  Col1Link5 String
+  Col1Link5Title String
+  Col1Link5Color String
+  Col2Heading String
+  Col2Link1 String
+  Col2Link1Title String
+  Col2Link1Color String
+  Col2Link2 String
+  Col2Link2Title String
+  Col2Link2Color String
+  Col2Link3 String
+  Col2Link3Title String
+  Col2Link3Color String
+  Col3Heading String
+  Col3Link1 String
+  Col3Link1Title String
+  Col3Link1Color String
+  Col3Link2 String
+  Col3Link2Title String
+  Col3Link2Color String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model specialProducts {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  titleColor  String
+  description String
+  price       Int
+  priceColor  String
+  reviews     Int
+  img         String[]
+  category    String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
 
 model post {
